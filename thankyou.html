@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SowetoStyle | Thank You</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #faf6f0;
+            color: #1a1a1a;
+        }
+
+        .top-bar {
+            background: #0a0a0a;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .home-link {
+            color: #ffffff;
+            text-decoration: none;
+            background: transparent;
+            padding: 8px 18px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid #b87c4f;
+        }
+
+        .home-link:hover {
+            background: #b87c4f;
+            border-color: #b87c4f;
+        }
+
+        .thankyou-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 0 5%;
+            text-align: center;
+        }
+
+        .thankyou-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .check-icon {
+            width: 60px;
+            height: 60px;
+            background: #b87c4f;
+            color: white;
+            font-size: 2rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem auto;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-number {
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 6px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .order-number span {
+            font-weight: bold;
+            color: #b87c4f;
+        }
+
+        .instruction {
+            background: #faf6f0;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: left;
+            border-left: 3px solid #b87c4f;
+        }
+
+        .instruction p {
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+            color: #555;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+
+        .bank-details {
+            background: #f8f9fa;
+            padding: 0.8rem;
+            border-radius: 6px;
+            margin: 1rem 0;
+            text-align: left;
+            font-size: 0.8rem;
+        }
+
+        .bank-details .title {
+            font-weight: bold;
+            color: #b87c4f;
+            margin-bottom: 5px;
+        }
+
+        .bank-details p {
+            margin: 3px 0;
+        }
+
+        .continue-btn {
+            display: inline-block;
+            background: #b87c4f;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .continue-btn:hover {
+            background: #9b623c;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #888;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.8rem;
+        }
+
+        .address-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .location-icon {
+            width: 14px;
+            height: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .thankyou-card {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.3rem;
+            }
+            .logo {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <img src="LOGO2.PNG" alt="SowetoStyle" class="logo">
+        <a href="index.html" class="home-link">Home</a>
+    </div>
+
+    <div class="thankyou-container">
+        <div class="thankyou-card">
+            <div class="check-icon">✓</div>
+            <h1>Thank You!</h1>
+            <p>Your order has been received.</p>
+
+            <div class="order-number">
+                Order #: <span>SS-<script>document.write(Math.floor(Math.random() * 10000) + 1000);</script></span>
+            </div>
+
+            <div class="instruction">
+                <p>1. Pay to the bank details below</p>
+                <p>2. Send proof of payment via WhatsApp</p>
+                <p>3. Your order will be processed</p>
+            </div>
+
+            <div class="bank-details">
+                <div class="title">Bank Transfer</div>
+                <p>Bank: [Bank Name]</p>
+                <p>Account Holder: [Account Name]</p>
+                <p>Account Number: [Account Number]</p>
+                <p>Branch Code: [Branch Code]</p>
+                <p>Reference: Your Name</p>
+            </div>
+
+            <a href="https://wa.me/27783387270" target="_blank" class="whatsapp-btn">Send Proof on WhatsApp</a>
+            <br>
+            <a href="shop.html" class="continue-btn">Shop More</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>SowetoStyle | Streetwear from the kasi</p>
+        <div class="address-line">
+            <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>353 Elias Motsoaledi Street, Mofolo South, Johannesburg</span>
+        </div>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderTotal = urlParams.get('total');
+        if (orderTotal) {
+            const bankDetails = document.querySelector('.bank-details');
+            const totalLine = document.createElement('p');
+            totalLine.innerHTML = `<strong>Total:</strong> R${orderTotal}`;
+            bankDetails.appendChild(totalLine);
+        }
+    </script>
+</body>
+</html>

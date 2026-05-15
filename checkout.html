@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SowetoStyle | Checkout</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+        }
+
+        .top-bar {
+            background: #0a0a0a;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            height: 40px;
+            width: auto;
+        }
+
+        .back-to-cart {
+            color: #ffffff;
+            text-decoration: none;
+            background: transparent;
+            padding: 8px 18px;
+            border-radius: 30px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid #b87c4f;
+        }
+
+        .back-to-cart:hover {
+            background: #b87c4f;
+            border-color: #b87c4f;
+        }
+
+        .checkout-container {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 5%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 3rem;
+        }
+
+        .checkout-form h2, .order-review h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            font-size: 0.9rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: white;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #b87c4f;
+            box-shadow: 0 0 0 3px rgba(184,124,79,0.1);
+        }
+
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .order-review {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            height: fit-content;
+            border: 1px solid #eaeaea;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #efefef;
+        }
+
+        .cart-item-title {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .cart-item-price {
+            color: #b87c4f;
+            font-weight: 700;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid #efefef;
+            font-size: 0.95rem;
+        }
+
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #b87c4f;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 2px solid #efefef;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .bank-details {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border: 1px solid #e0e0e0;
+        }
+
+        .bank-details p {
+            margin: 5px 0;
+            font-size: 0.8rem;
+        }
+
+        .bank-details .title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #b87c4f;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            padding: 14px;
+            background: #b87c4f;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 1rem;
+        }
+
+        .place-order-btn:hover {
+            background: #9b623c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(184,124,79,0.25);
+        }
+
+        .delivery-note {
+            font-size: 0.7rem;
+            color: #666;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+
+        footer {
+            background: #0a0a0a;
+            color: #8f8f8f;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            font-size: 0.85rem;
+            border-top: 1px solid #1f1f1f;
+        }
+
+        .address-line {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .location-icon {
+            width: 14px;
+            height: 14px;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .row-2 {
+                grid-template-columns: 1fr;
+            }
+            .logo {
+                height: 30px;
+            }
+            .address-line {
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <img src="LOGO2.PNG" alt="SowetoStyle" class="logo">
+        <a href="cartpage.html" class="back-to-cart">← Back to Cart</a>
+    </div>
+
+    <div class="checkout-container">
+        <div class="checkout-form">
+            <h2>Billing Details</h2>
+            <form id="checkoutForm">
+                <div class="row-2">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone Number</label>
+                    <input type="tel" required>
+                </div>
+                <div class="form-group">
+                    <label>Street Address</label>
+                    <input type="text" required>
+                </div>
+                <div class="row-2">
+                    <div class="form-group">
+                        <label>Suburb / Township</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Postal Code</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Select Province</label>
+                    <select id="provinceSelect" required>
+                        <option value="">Select Province</option>
+                        <option value="Gauteng">Gauteng</option>
+                        <option value="Western Cape">Western Cape</option>
+                        <option value="KwaZulu-Natal">KwaZulu-Natal</option>
+                        <option value="Eastern Cape">Eastern Cape</option>
+                        <option value="Free State">Free State</option>
+                        <option value="Mpumalanga">Mpumalanga</option>
+                        <option value="Limpopo">Limpopo</option>
+                        <option value="North West">North West</option>
+                        <option value="Northern Cape">Northern Cape</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Paxi Pickup Location (PEP Store)</label>
+                    <select id="pepStoreSelect" required>
+                        <option value="">Select a PEP store</option>
+                    </select>
+                </div>
+                <button type="submit" class="place-order-btn">Place Order</button>
+                <div class="delivery-note">Delivery via Paxi (PEP) - Collect at your selected PEP store nationwide. R100 delivery fee applies.</div>
+            </form>
+        </div>
+
+        <div class="order-review">
+            <h2>Your Order</h2>
+            <div id="orderItems"></div>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">R0</span>
+            </div>
+            <div class="summary-row">
+                <span>Delivery (Paxi)</span>
+                <span>R100</span>
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="total">R0</span>
+            </div>
+            
+            <div class="bank-details">
+                <div class="title">Bank Transfer Details</div>
+                <p><strong>Bank:</strong> Capitec Bank</p>
+                <p><strong>Account Holder:</strong> Thabiso Olifants</p>
+                <p><strong>Account Number:</strong> 1777001623</p>
+                <p><strong>Branch Code:</strong> 470010</p>
+                <p><strong>Reference:</strong> Your Name + Order Date</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>SowetoStyle | It's The Life We Believe In</p>
+        <div class="address-line">
+            <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="#8f8f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>353 Elias Motsoaledi Street, Mofolo South, Johannesburg</span>
+        </div>
+    </footer>
+
+    <script>
+        const pepStoresByProvince = {
+            "Gauteng": [
+                "PEP Soshanguve Mall (Soshanguve)",
+                "PEP Soshanguve Block KK (Soshanguve)",
+                "PEP Soshanguve Crossing (Soshanguve)",
+                "PEP Menlyn Park (Pretoria)",
+                "PEP Sandton City (Sandton)",
+                "PEP Maponya Mall (Soweto)",
+                "PEP Bara Mall (Soweto)",
+                "PEP Tembisa Plaza (Tembisa)",
+                "PEP Vosloorus CBD (Vosloorus)",
+                "PEP Eastgate Mall (Bedfordview)",
+                "PEP Mall of Africa (Midrand)",
+                "PEP Southgate Mall (Johannesburg South)",
+                "PEP Clearwater Mall (Roodepoort)",
+                "PEP Cresta Mall (Randburg)"
+            ],
+            "Western Cape": [
+                "PEP Cape Town CBD (Cape Town)",
+                "PEP Vangate Mall (Athlone)",
+                "PEP Mitchells Plain Town Centre (Mitchells Plain)",
+                "PEP Khayelitsha Mall (Khayelitsha)",
+                "PEP Somerset Mall (Somerset West)",
+                "PEP Garden Route Mall (George)",
+                "PEP Paarl Mall (Paarl)",
+                "PEP Worcester Square (Worcester)",
+                "PEP Table Bay Mall (Blouberg)"
+            ],
+            "KwaZulu-Natal": [
+                "PEP Durban CBD (Durban)",
+                "PEP Umlazi Mega City (Umlazi)",
+                "PEP Liberty Midlands Mall (Pietermaritzburg)",
+                "PEP Newcastle Mall (Newcastle)",
+                "PEP Boardwalk Inkwazi (Richards Bay)",
+                "PEP Phoenix Plaza (Phoenix)",
+                "PEP Chatsworth Centre (Chatsworth)",
+                "PEP Galleria Mall (Amanzimtoti)"
+            ],
+            "Eastern Cape": [
+                "PEP Baywest Mall (Gqeberha)",
+                "PEP Hemingways Mall (East London)",
+                "PEP Mthatha Plaza (Mthatha)",
+                "PEP Queenstown Mall (Queenstown)",
+                "PEP Mdantsane City (Mdantsane)",
+                "PEP Motherwell Shopping Centre (Motherwell)"
+            ],
+            "Free State": [
+                "PEP Bloemfontein CBD (Bloemfontein)",
+                "PEP Welkom Central (Welkom)",
+                "PEP Bethlehem Square (Bethlehem)",
+                "PEP Sasolburg Mall (Sasolburg)",
+                "PEP Botshabelo Mall (Botshabelo)"
+            ],
+            "Mpumalanga": [
+                "PEP Ilanga Mall (Nelspruit)",
+                "PEP Highveld Mall (Witbank)",
+                "PEP Secunda Plaza (Secunda)",
+                "PEP Middelburg Mall (Middelburg)",
+                "PEP Ermelo Centre (Ermelo)"
+            ],
+            "Limpopo": [
+                "PEP Mall of the North (Polokwane)",
+                "PEP Tzaneen Mall (Tzaneen)",
+                "PEP Mokopane Crossing (Mokopane)",
+                "PEP Thohoyandou Plaza (Thohoyandou)",
+                "PEP Giyani Plaza (Giyani)"
+            ],
+            "North West": [
+                "PEP Mega City (Mmabatho)",
+                "PEP Rustenburg Plaza (Rustenburg)",
+                "PEP Klerksdorp Mall (Klerksdorp)",
+                "PEP Potchefstroom Mall (Potchefstroom)",
+                "PEP Brits Plaza (Brits)"
+            ],
+            "Northern Cape": [
+                "PEP Kimberley CBD (Kimberley)",
+                "PEP Upington Mall (Upington)",
+                "PEP Springbok Centre (Springbok)",
+                "PEP De Aar Plaza (De Aar)",
+                "PEP Kuruman Mall (Kuruman)"
+            ]
+        };
+
+        const provinceSelect = document.getElementById('provinceSelect');
+        const pepStoreSelect = document.getElementById('pepStoreSelect');
+
+        provinceSelect.addEventListener('change', function() {
+            const province = this.value;
+            pepStoreSelect.innerHTML = '<option value="">Select a PEP store</option>';
+            
+            if (province && pepStoresByProvince[province]) {
+                pepStoresByProvince[province].forEach(store => {
+                    const option = document.createElement('option');
+                    option.value = store;
+                    option.textContent = store;
+                    pepStoreSelect.appendChild(option);
+                });
+            }
+        });
+
+        function loadOrderReview() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderItemsDiv = document.getElementById('orderItems');
+            const subtotalSpan = document.getElementById('subtotal');
+            const totalSpan = document.getElementById('total');
+            const deliveryFee = 100;
+            
+            let subtotal = 0;
+            let itemsHtml = '';
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                const colorSize = item.color && item.size ? ` (${item.color}, ${item.size})` : '';
+                itemsHtml += `
+                    <div class="cart-item">
+                        <span class="cart-item-title">${item.name}${colorSize} x${item.quantity}</span>
+                        <span class="cart-item-price">R${itemTotal}</span>
+                    </div>
+                `;
+            });
+            
+            if (cart.length === 0) {
+                itemsHtml = '<div class="cart-item"><span class="cart-item-title">Your cart is empty</span></div>';
+            }
+            
+            orderItemsDiv.innerHTML = itemsHtml;
+            subtotalSpan.innerText = 'R' + subtotal.toLocaleString();
+            const total = subtotal + deliveryFee;
+            totalSpan.innerText = 'R' + total.toLocaleString();
+        }
+        
+        document.getElementById('checkoutForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            const firstName = document.querySelectorAll('input[type="text"]')[0].value;
+            const lastName = document.querySelectorAll('input[type="text"]')[1].value;
+            const email = document.querySelector('input[type="email"]').value;
+            const phone = document.querySelector('input[type="tel"]').value;
+            const streetAddress = document.querySelectorAll('input[type="text"]')[2].value;
+            const suburb = document.querySelectorAll('input[type="text"]')[3].value;
+            const postalCode = document.querySelectorAll('input[type="text"]')[4].value;
+            const province = provinceSelect.value;
+            const pickupLocation = pepStoreSelect.value;
+            
+            if (!province) {
+                alert('Please select your province');
+                return;
+            }
+            if (!pickupLocation) {
+                alert('Please select a PEP store pickup location');
+                return;
+            }
+            
+            let orderDetails = `NEW ORDER FOR SOWETOSTYLE%0A%0A`;
+            orderDetails += `Customer: ${firstName} ${lastName}%0A`;
+            orderDetails += `Email: ${email}%0A`;
+            orderDetails += `Phone: ${phone}%0A`;
+            orderDetails += `Address: ${streetAddress}, ${suburb}, ${postalCode}%0A`;
+            orderDetails += `Province: ${province}%0A`;
+            orderDetails += `Pickup: ${pickupLocation}%0A%0A`;
+            orderDetails += `ITEMS:%0A`;
+            
+            let subtotal = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                const colorSize = item.color && item.size ? ` (${item.color}, ${item.size})` : '';
+                orderDetails += `- ${item.name}${colorSize} x${item.quantity} = R${itemTotal}%0A`;
+            });
+            
+            const deliveryFee = 100;
+            const total = subtotal + deliveryFee;
+            orderDetails += `%0ASubtotal: R${subtotal}%0A`;
+            orderDetails += `Delivery (Paxi): R100%0A`;
+            orderDetails += `TOTAL: R${total}`;
+            
+            const whatsappUrl = `https://wa.me/27783387270?text=${orderDetails}`;
+            window.open(whatsappUrl, '_blank');
+            
+            localStorage.removeItem('cart');
+            window.location.href = `thankyou.html?total=${total}`;
+        });
+        
+        loadOrderReview();
+    </script>
+</body>
+</html>
